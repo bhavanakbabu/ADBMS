@@ -1,0 +1,59 @@
+-- 
+-- Roll No: 10
+-- Name: Bhavana K Babu
+-- Program: Assignment-I
+-- 
+
+
+--
+-- Table structure for table categories
+
+
+create table categories (category_id int primary key, name varchar(50)not null, parent_category int);
+
+alter table categories add constraint categories_fkey_category_id foreign key (parent_category) references categories(category_id);
+
+
+--
+Table structure for table products
+
+
+create table products (product_id int primary key, name varchar(50) not null unique,price float(6,2) default 100.00, category_id int, quantity int,foreign key (category_id) references categories(category_id));
+
+alter table product add constraint prd_chk_prc check(price>0 and price<3000);
+
+
+
+--
+-- Dumping data for table categories
+--
+
+-- 
+insert into categories values(1,'Phones', NULL);
+insert into categories values(2, 'Laptops', NULL);
+insert into categories values(3, 'Consoles', NULL);
+insert into categories values(4, 'iPhone', 1);
+insert into categories values(5, 'Windows', 2);
+insert into categories values(6, 'Xbox', 3);
+
+-- Dumping data for table products
+--
+
+
+insert into products values(1, 'iPhone 12', 999.99, 4, 10);
+insert into products values(2, 'MacBook Pro', 1999.99, 2, 5);
+insert into products values(3, 'Dell XPS 15', 1599.99, 5, 8);
+insert into products values(4, 'Sony PlayStation 5', 499.99, 3, 20);
+insert into products values(4, 'Sony PlayStation 5', 499.99, 3, 20);
+insert into products values(5, 'Nintendo', 149.99, 3, 12);
+insert into products (product_id,name,price,category_id) values(6, 'Xbox Series X', 499.99, 6);
+
+
+
+
+
+-- SQl Query Statements
+--
+
+-- -----SQL query statments preceeded by the its question-------- # This line may be removed in the actual file
+-- -----Question number should be commented---------------#This line may be removed in the actual file
